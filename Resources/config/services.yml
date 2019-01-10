@@ -16,3 +16,4 @@ services:
         arguments:
               - "@hanfrey_sparkpost.http_adapter"
               - key: "%hanfrey_sparkpost.api_token%"
+              - host: "%hanfrey_sparkpost.host%"

@@ -1,6 +1,9 @@
 # sparkpost-bundle [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/Hanfrey/sparkpost-bundle/blob/master/LICENSE)
 
 Bundle for using Sparkpost in symfony
+
+Forked from https://github.com/Hanfrey/sparkpost-bundle to support more configuration options, such as host.
+
 # Installation
 
 ## Step 1) Get the bundle
@@ -35,35 +38,42 @@ Here is an example:
 # app/config/config.yml
 hanfrey_sparkpost:
     api_token: 1212334ba # replace with your own
+    host: api.eu.sparkpost.com # or api.sparkpost.com
 ```
 
 ## Step 4) Example Usage in a controller
 
 ```php
-$sparky= $this->get("hanfrey_sparkpost.api_client");
+use HanfreySparkpostBundle; 
 
-try {
-    // Build your email and send it!
-    $results = $sparky->transmission->send([
-        'from'=>'From Envelope <from@sparkpostbox.com>',
-        'html'=>'<html><body><h1>Congratulations, {{name}}!</h1><p>You just sent your very first mailing!</p></body></html>',
-        'text'=>'Congratulations, {{name}}!! You just sent your very first mailing!',
-        'substitutionData'=>['name'=>'YOUR FIRST NAME'],
-        'subject'=>'First Mailing From PHP',
-        'recipients'=>[
-            [
-                'address'=>[
-                    'name'=>'YOUR FULL NAME',
-                    'email'=>'YOUR EMAIL ADDRESS'
+public function sendMailAction(Mail $mail)
+{
+
+    $sparky= $this->get("hanfrey_sparkpost.api_client");
+    
+    try {
+        // Build your email and send it!
+        $results = $sparky->transmission->send([
+            'from'=>'From Envelope <from@sparkpostbox.com>',
+            'html'=>'<html><body><h1>Congratulations, {{name}}!</h1><p>You just sent your very first mailing!</p></body></html>',
+            'text'=>'Congratulations, {{name}}!! You just sent your very first mailing!',
+            'substitutionData'=>['name'=>'YOUR FIRST NAME'],
+            'subject'=>'First Mailing From PHP',
+            'recipients'=>[
+                [
+                    'address'=>[
+                        'name'=>'YOUR FULL NAME',
+                        'email'=>'YOUR EMAIL ADDRESS'
+                    ]
                 ]
             ]
-        ]
-    ]);
-    echo 'Woohoo! You just sent your first mailing!';
-} catch (\Exception $err) {
-    echo 'Whoops! Something went wrong';
-    var_dump($err);
-}
+        ]);
+        echo 'Woohoo! You just sent your first mailing!';
+    } catch (\Exception $err) {
+        echo 'Whoops! Something went wrong';
+        dump($err);
+    }
+}   
 ```
 
 ## Documentation

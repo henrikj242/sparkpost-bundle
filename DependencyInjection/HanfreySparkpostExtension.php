@@ -32,6 +32,7 @@ class HanfreySparkpostExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $container->setParameter('hanfrey_sparkpost.api_token',$config['api_token']);
+        $container->setParameter('hanfrey_sparkpost.api_host',$config['api_token']);
        
         //   $this->setParameters($container, $config);
         $loader->load('services.yml');

@@ -1,5 +1,5 @@
 {
-  "name": "hanfrey/sparkpost-bundle",
+  "name": "henrikj242/sparkpost-bundle",
   "description": "This bundle provides integration with the Sparkpost API library, allowing you to interact with the Sparkpost API from within your Symfony projects",
   "keywords": [
     "sparkpost",
@@ -11,9 +11,9 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Hanfrey",
-      "homepage": "https://github.com/hanfrey",
-      "email": "hanfreyy@gmail.com"
+      "name": "Henrik242",
+      "homepage": "https://github.com/henrikj242",
+      "email": "henrik242@gmail.com"
     }
   ],
   "require": {

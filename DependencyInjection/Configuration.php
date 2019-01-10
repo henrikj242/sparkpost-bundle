@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->scalarNode('api_token')->defaultNull()->end()
+            ->scalarNode('api_host')->defaultValue('api.sparkpost.com')->end()
             ->end()
         ;
         return $treeBuilder;
